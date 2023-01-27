@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,16 +16,18 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm start
-      env:
-        ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
-        ACCESS_TOKEN_SECRET: ${{secrets.ACCESS_TOKEN}}
-        API_KEY: ${{secrets.ACCESS_TOKEN}}
-        API_SECRET: ${{secrets.ACCESS_TOKEN}}
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: install
+        run: npm ci
+      - name: send request
+        run: npm start
+        env:
+          ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+          ACCESS_TOKEN_SECRET: ${{secrets.ACCESS_TOKEN}}
+          API_KEY: ${{secrets.ACCESS_TOKEN}}
+          API_SECRET: ${{secrets.ACCESS_TOKEN}}
