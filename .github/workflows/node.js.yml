@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   schedule:
-    - cron: "23 21 * * *"
+    - cron: "56 21 * * 0-6"
   workflow_dispatch:
 
 env:
