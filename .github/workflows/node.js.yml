@@ -1,9 +1,9 @@
 name: Node.js CI
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 21 * * *"
+    - cron: "10 21 * * *"
+  workflow_dispatch:
 
 env:
   ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
