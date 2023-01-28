@@ -1,6 +1,7 @@
 name: Node.js CI
 
 on:
+push: 
   workflow_dispatch:
 
 env:
@@ -27,8 +28,8 @@ jobs:
           cache: "npm"
       - name: install
         run: npm ci
-      - name: send request
-        run: npm start
+      - name: Test request
+        run: npm test
         env:
           ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
           ACCESS_TOKEN_SECRET: ${{secrets.ACCESS_TOKEN_SECRET}}
