@@ -2,7 +2,7 @@
 name: Scheduled Tweet
 on:
   schedule:
-    - cron: 15 02 * * 0-6
+    - cron: '40 07 * * 0-6'
 jobs:
   build:
     runs-on: ubuntu-latest
