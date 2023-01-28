@@ -3,10 +3,7 @@ orbs:
   node: circleci/node@5.0.2
 jobs:
   Tweet:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      executor: node/default
+    executor: node/default
     steps:
       - checkout
       - run: sudo npm install -g npm@latest
