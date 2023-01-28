@@ -10,7 +10,13 @@ jobs:
       - node/install-packages:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
-      - run: npm run test
+      - run: npm run start
+          env:
+            ACCESS_TOKEN: $ACCESS_TOKEN
+            ACCESS_TOKEN_SECRET: $ACCESS_TOKEN_SECRET
+            API_KEY: $API_KEY
+            API_SECRET: $API_SECRET
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
