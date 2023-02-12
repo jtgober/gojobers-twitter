@@ -35,3 +35,4 @@ jobs:
           ACCESS_TOKEN_SECRET: ${{secrets.ACCESS_TOKEN_SECRET}}
           API_KEY: ${{secrets.API_KEY}}
           API_SECRET: ${{secrets.API_SECRET}}
+          CHAT_KEY: ${{secrets.CHAT_KEY}}
