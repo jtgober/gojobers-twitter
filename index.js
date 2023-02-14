@@ -1,6 +1,7 @@
 import Twit from "twit";
 import dotenv from "dotenv";
 import { chatGPT } from "./lib/chatGPT.js";
+import { getRandomPokemon } from "./poke-api.js";
 
 dotenv.config();
 
@@ -11,8 +12,9 @@ const T = new Twit({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 });
 const tweet = async () => {
-    const text = `Letting ChatGPT ask us questions: ${await chatGPT(`Ask me a question instead. Dont give me any answers`)} #ChatGPT #AI`
-
+  const whoseThatPokemon = await getRandomPokemon()
+  const text = `Letting ChatGPT chat about pokemon: ${await chatGPT(`write me a tweet about the pokemon ${whoseThatPokemon}`)} #ChatGPT #AI`
+  
   const onFinish = (err, reply) => {
     if (err) {
       console.log("Error: ", err.message);
