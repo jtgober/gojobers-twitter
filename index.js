@@ -1,7 +1,7 @@
 import Twit from "twit";
 import dotenv from "dotenv";
 import { chatGPT } from "./lib/chatGPT.js";
-import { getRandomPokemon } from "./poke-api.js";
+import { getRandomPokemon } from "./lib/poke-api.js"
 
 dotenv.config();
 
