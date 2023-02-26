@@ -5,6 +5,7 @@ import { generateDalleImage } from "./lib/dalle-e.js";
 import { getRandomPokemon } from "./lib/poke-api.js";
 import util from "util";
 import fs from "fs";
+import path from "path";
 
 dotenv.config();
 
