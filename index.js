@@ -15,7 +15,7 @@ const T = new Twit({
 
 const tweet = async (prompt, status) => {
   const imageData = await generateImage(prompt);
-  const mediaUploadResponse = await twit.post("media/upload", {
+  const mediaUploadResponse = await T.post("media/upload", {
     media_data: imageData.toString("base64"),
   });
   const mediaIdStr = mediaUploadResponse.data.media_id_string;
@@ -24,7 +24,7 @@ const tweet = async (prompt, status) => {
     media_ids: [mediaIdStr],
   };
 
-  const tweetResponse = await twit.post("statuses/update", tweet);
+  const tweetResponse = await T.post("statuses/update", tweet);
 
   console.log("Tweet posted:", tweetResponse.data.text);
 };
