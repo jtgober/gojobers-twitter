@@ -15,9 +15,6 @@ const T = new Twit({
 
 const tweet = async (prompt, status) => {
   const imageData = await generateDalleImage(prompt);
-
-  const T = new Twit(twitterConfig);
-
   const mediaUpload = util.promisify(T.postMediaChunked.bind(T));
   const mediaUploadResponse = await mediaUpload({ file_data: imageData });
 
