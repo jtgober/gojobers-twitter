@@ -55,47 +55,47 @@ console.log("🚀 ~ file: chatGPT.spec.js:8 ~ myNum:", myNum);
 
 switch (myNum) {
   case 1:
-    await generateDalleImage("cute dog");
+    await generateDalleImage("cute real dog");
     break;
   case 2:
-    await generateDalleImage("cute cat");
+    await generateDalleImage("cute real cat");
     break;
   case 3:
-    await generateDalleImage("cute Red panda");
+    await generateDalleImage("cute real Red panda");
     break;
   case 4:
-    await generateDalleImage("cute Koala");
+    await generateDalleImage("cute real Koala");
     break;
   case 5:
-    await generateDalleImage("cute Penguin");
+    await generateDalleImage("cute real Penguin");
     break;
   case 6:
-    await generateDalleImage("cute Otter");
+    await generateDalleImage("cute real Otter");
     break;
   case 7:
-    await generateDalleImage("cute Hedgehog");
+    await generateDalleImage("cute real Hedgehog");
     break;
   case 8:
-    await generateDalleImage("cute Sloth");
+    await generateDalleImage("cute real Sloth");
     break;
   case 9:
-    await generateDalleImage("cute fox");
+    await generateDalleImage("cute real fox");
     break;
   case 10:
-    await generateDalleImage("cute Raccoon");
+    await generateDalleImage("cute real Raccoon");
     break;
   case 11:
-    await generateDalleImage("cute axolotl");
+    await generateDalleImage("cute real axolotl");
     break;
   case 12:
-    await generateDalleImage("cute Raccoon");
+    await generateDalleImage("cute real Raccoon");
     break;
   case 13:
-    await generateDalleImage("cute Panda");
+    await generateDalleImage("cute real Panda");
     break;
   case 14:
-    await generateDalleImage("cute sea otter");
+    await generateDalleImage("cute real sea otter");
     break;
   default:
-    await generateDalleImage("cute axolotl");
+    await generateDalleImage("cute real axolotl");
 }
