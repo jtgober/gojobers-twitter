@@ -1,7 +1,8 @@
 import Twit from "twit";
 import dotenv from "dotenv";
 import { chatGPT } from "./lib/chatGPT.js";
-import { getRandomPokemon } from "./lib/poke-api.js"
+import { generateImage } from "./lib/dalle-e.js";
+import { getRandomPokemon } from "./lib/poke-api.js";
 
 dotenv.config();
 
@@ -11,20 +12,25 @@ const T = new Twit({
   access_token: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 });
-const tweet = async () => {
-  const whoseThatPokemon = await getRandomPokemon()
-  const text = `Letting ChatGPT chat about pokemon: ${await chatGPT(`write me a tweet about the pokemon ${whoseThatPokemon}`)} #ChatGPT #AI`
-  
-  const onFinish = (err, reply) => {
-    if (err) {
-      console.log("Error: ", err.message);
-    } else {
-      console.log("Success: ", reply);
-    }
+
+const tweet = async (prompt, status) => {
+  const imageData = await generateImage(prompt);
+  const mediaUploadResponse = await twit.post("media/upload", {
+    media_data: imageData.toString("base64"),
+  });
+  const mediaIdStr = mediaUploadResponse.data.media_id_string;
+  const tweet = {
+    status: status,
+    media_ids: [mediaIdStr],
   };
 
-  T.post("statuses/update", { status: text }, onFinish);
+  const tweetResponse = await twit.post("statuses/update", tweet);
+
+  console.log("Tweet posted:", tweetResponse.data.text);
 };
 
-tweet();
-console.log(tweet);
+// Example usage:
+postDalleImage(
+  "a cute cat with glasses",
+  "Check out this adorable cat I generated with DALL-E! #dalle #cat"
+);
