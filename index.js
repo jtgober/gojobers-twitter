@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { chatGPT } from "./lib/chatGPT.js";
 import { generateDalleImage } from "./lib/dalle-e.js";
 import { getRandomPokemon } from "./lib/poke-api.js";
-const util = require("util");
+import util from "util";
 
 dotenv.config();
 
