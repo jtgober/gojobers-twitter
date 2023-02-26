@@ -6,7 +6,7 @@ import { getRandomPokemon } from "./lib/poke-api.js";
 import util from "util";
 import fs from "fs";
 import path from "path";
-
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 dotenv.config();
 
 const T = new Twit({
