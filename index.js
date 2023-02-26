@@ -30,7 +30,7 @@ const tweet = async (prompt, status) => {
 };
 
 // Example usage:
-postDalleImage(
+tweet(
   "a cute cat with glasses",
   "Check out this adorable cat I generated with DALL-E! #dalle #cat"
 );
