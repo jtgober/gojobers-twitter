@@ -1,7 +1,7 @@
 import Twit from "twit";
 import dotenv from "dotenv";
 import { chatGPT } from "./lib/chatGPT.js";
-import { generateImage } from "./lib/dalle-e.js";
+import { generateDalleImage } from "./lib/dalle-e.js";
 import { getRandomPokemon } from "./lib/poke-api.js";
 
 dotenv.config();
@@ -14,19 +14,22 @@ const T = new Twit({
 });
 
 const tweet = async (prompt, status) => {
-  const imageData = await generateImage(prompt);
-  const mediaUploadResponse = await T.post("media/upload", {
-    media_data: imageData.toString("base64"),
-  });
-  const mediaIdStr = mediaUploadResponse.data.media_id_string;
+  const imageData = await generateDalleImage(prompt);
+
+  const T = new Twit(twitterConfig);
+
+  const mediaUpload = util.promisify(T.postMediaChunked.bind(T));
+  const mediaUploadResponse = await mediaUpload({ file_data: imageData });
+
   const tweet = {
     status: status,
-    media_ids: [mediaIdStr],
+    media_ids: [mediaUploadResponse.media_id_string],
   };
 
-  const tweetResponse = await T.post("statuses/update", tweet);
+  const post = util.promisify(T.post.bind(T));
+  const postResponse = await post("statuses/update", tweet);
 
-  console.log("Tweet posted:", tweetResponse.data.text);
+  return postResponse;
 };
 
 // Example usage:
