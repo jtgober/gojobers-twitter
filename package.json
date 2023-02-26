@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./index.js",
-    "test": "node ./lib/myTweets.js"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "axios": "^1.3.2",
     "dotenv": "^16.0.3",
     "twit": "^2.2.11"
+  },
+  "devDependencies": {
+    "vitest": "^0.29.1"
   }
 }
