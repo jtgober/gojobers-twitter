@@ -12,7 +12,12 @@ const T = new Twit({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 });
 const tweet = async () => {
-  const whoseThatPokemon = await getRandomPokemon()
+  let randomNumber = () => { // min and max included 
+    return Math.floor(Math.random() * 1008) + 1
+  }
+  
+  const rndInt = randomNumber()
+  const whoseThatPokemon = await getRandomPokemon(rndInt)
   const text = `Letting ChatGPT chat about pokemon: ${await chatGPT(`write me a tweet about the pokemon ${whoseThatPokemon}`)} #ChatGPT #AI`
   
   const onFinish = (err, reply) => {
