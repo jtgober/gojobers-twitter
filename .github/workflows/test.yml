@@ -1,8 +1,7 @@
 name: Node.js CI
 
-on:
-  push:
-  workflow_dispatch:
+on: 
+  [repository_dispatch]
 
 env:
   ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
