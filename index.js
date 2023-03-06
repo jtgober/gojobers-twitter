@@ -1,35 +1,36 @@
-import Twit from "twit";
-import dotenv from "dotenv";
-import { chatGPT } from "./lib/chatGPT.js";
-import { getRandomPokemon } from "./lib/poke-api.js"
+/* eslint-disable no-undef */
+import Twit from 'twit'
+import dotenv from 'dotenv'
+import { chatGPT } from './lib/chatGPT.js'
+import { getRandomPokemon } from './lib/poke-api.js'
 
-dotenv.config();
+dotenv.config()
 
 const T = new Twit({
-  consumer_key: process.env.API_KEY,
-  consumer_secret: process.env.API_SECRET,
-  access_token: process.env.ACCESS_TOKEN,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-});
+	consumer_key: process.env.API_KEY,
+	consumer_secret: process.env.API_SECRET,
+	access_token: process.env.ACCESS_TOKEN,
+	access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+})
 const tweet = async () => {
-  let randomNumber = () => { // min and max included 
-    return Math.floor(Math.random() * 1008) + 1
-  }
-  
-  const rndInt = randomNumber()
-  const whoseThatPokemon = await getRandomPokemon(rndInt)
-  const text = `Letting ChatGPT chat about pokemon: ${await chatGPT(`write me a tweet about the pokemon ${whoseThatPokemon}`)} #ChatGPT #AI`
-  
-  const onFinish = (err, reply) => {
-    if (err) {
-      console.log("Error: ", err.message);
-    } else {
-      console.log("Success: ", reply);
-    }
-  };
+	let randomNumber = () => { // min and max included 
+		return Math.floor(Math.random() * 1008) + 1
+	}
 
-  T.post("statuses/update", { status: text }, onFinish);
-};
+	const rndInt = randomNumber()
+	const whoseThatPokemon = await getRandomPokemon(rndInt)
+	const text = `Letting ChatGPT chat about pokemon: ${await chatGPT(`write me a tweet about the pokemon ${whoseThatPokemon}`)} #ChatGPT #AI`
 
-tweet();
-console.log(tweet);
+	const onFinish = (err, reply) => {
+		if (err) {
+			console.log('Error: ', err.message)
+		} else {
+			console.log('Success: ', reply)
+		}
+	}
+
+	T.post('statuses/update', { status: text }, onFinish)
+}
+
+tweet()
+
