@@ -1,0 +1,1 @@
+{"type":"object","required":[],"properties":{"id":{"type":"string"},"text":{"type":"string"},"source":{"type":"string"},"source_url":{"type":"string"},"language":{"type":"string"},"permalink":{"type":"string"}}}

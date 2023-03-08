@@ -1,32 +1,32 @@
 /* eslint-disable no-undef */
 module.exports = {
-	'env': {
-		'browser': true,
-		'es2021': true
+	"env": {
+		"browser": true,
+		"es2021": true
 	},
-	'extends': 'eslint:recommended',
-	'overrides': [
+	"extends": "eslint:recommended",
+	"overrides": [
 	],
-	'parserOptions': {
-		'ecmaVersion': 'latest',
-		'sourceType': 'module'
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
 	},
-	'rules': {
-		'indent': [
-			'error',
-			'tab'
+	"rules": {
+		"indent": [
+			"error",
+			"tab"
 		],
-		'linebreak-style': [
-			'error',
-			'windows'
+		"linebreak-style": [
+			"error",
+			"windows"
 		],
-		'quotes': [
-			'error',
-			'single'
+		"quotes": [
+			"error",
+			"double"
 		],
-		'semi': [
-			'error',
-			'never'
+		"semi": [
+			"error",
+			"never"
 		]
 	}
 }
